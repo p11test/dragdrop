@@ -68,7 +68,6 @@ namespace WindowsFormsApp1
         public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint cButtons, uint dwExtraInfo);
 
         [DllImport("user32.dll", SetLastError = true)]
-        //private static extern uint SendInput(uint numberOfInputs, INPUT inputs, int sizeOfInputStructure);
         private static extern uint SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
 
         [DllImport("user32.dll")]
@@ -187,9 +186,6 @@ namespace WindowsFormsApp1
 
             // ListDragSource
             this.ListDragSource.Items.AddRange(new object[] {"aa.json", "bb.json" });
- //           this.ListDragSource.Items.AddRange(new object[] {"one", "two", "three", "four",
- //"five", "six", "seven", "eight",
- //"nine", "ten"});
             this.ListDragSource.Location = new System.Drawing.Point(10, 17);
             this.ListDragSource.Size = new System.Drawing.Size(120, 225);
             this.ListDragSource.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ListDragSource_MouseDown);
@@ -197,15 +193,6 @@ namespace WindowsFormsApp1
             this.ListDragSource.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ListDragSource_MouseUp);
             this.ListDragSource.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ListDragSource_MouseMove);
             this.ListDragSource.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.ListDragSource_GiveFeedback);
-
-            // ListDragTarget
-            //this.ListDragTarget.AllowDrop = false;
-            //this.ListDragTarget.Location = new System.Drawing.Point(154, 17);
-            //this.ListDragTarget.Size = new System.Drawing.Size(120, 225);
-            //this.ListDragTarget.DragOver += new System.Windows.Forms.DragEventHandler(this.ListDragTarget_DragOver);
-            //this.ListDragTarget.DragDrop += new System.Windows.Forms.DragEventHandler(this.ListDragTarget_DragDrop);
-            //this.ListDragTarget.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListDragTarget_DragEnter);
-            //this.ListDragTarget.DragLeave += new System.EventHandler(this.ListDragTarget_DragLeave);
 
             // UseCustomCursorsCheck
             this.UseCustomCursorsCheck.Location = new System.Drawing.Point(10, 243);
@@ -222,9 +209,6 @@ namespace WindowsFormsApp1
             this.Controls.AddRange(new System.Windows.Forms.Control[] {this.ListDragSource,
   this.UseCustomCursorsCheck,
  this.DropLocationLabel});
- //           this.Controls.AddRange(new System.Windows.Forms.Control[] {this.ListDragSource,
- //this.ListDragTarget, this.UseCustomCursorsCheck,
- //this.DropLocationLabel});
             this.Text = "drag-and-drop Example";
 
             this.ResumeLayout(false);
@@ -361,9 +345,6 @@ namespace WindowsFormsApp1
 
             // The mouse locations are relative to the screen, so they must be 
             // converted to client coordinates.
-
-            //indexOfItemUnderMouseToDrop =
-             //ListDragTarget.IndexFromPoint(ListDragTarget.PointToClient(new Point(e.X, e.Y)));
 
             // Updates the label text.
             if (indexOfItemUnderMouseToDrop != ListBox.NoMatches)
